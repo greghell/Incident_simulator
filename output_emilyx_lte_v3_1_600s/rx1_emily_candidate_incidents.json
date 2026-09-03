@@ -1,0 +1,388 @@
+[
+  {
+    "org_id": null,
+    "site_id": null,
+    "inst_id": null,
+    "data_type": "spectrometer",
+    "timezone": "America/Los_Angeles",
+    "privacy_tier": "internal",
+    "t_start": "2026-09-02T19:00:59Z",
+    "t_mid": "2026-09-02T19:03:14Z",
+    "t_end": "2026-09-02T19:05:30Z",
+    "t_start_local": "2026-09-02T12:00:59-07:00",
+    "t_mid_local": "2026-09-02T12:03:14-07:00",
+    "t_end_local": "2026-09-02T12:05:30-07:00",
+    "t_start_offset_sec": 59.0,
+    "t_mid_offset_sec": 194.0,
+    "t_end_offset_sec": 330.0,
+    "duration_sec": 271.0,
+    "ongoing": false,
+    "time_structure": "bounded",
+    "f_low_hz": 795350000,
+    "f_high_hz": 804660000,
+    "f_center_hz": 800005000,
+    "bw_hz": 9310000,
+    "band_tag": "UHF",
+    "intensity_kind": "mW",
+    "intensity_value": 7.071552508706901e-12,
+    "Directional": false,
+    "RA": 0,
+    "Dec": 0,
+    "Az": 0,
+    "El": 0,
+    "lat": 39.5249,
+    "lon": -114.373325,
+    "altitude": null,
+    "original_file": "rx1_synthetic_600s_v3_1.npz",
+    "file_timestamp": "2026-09-02T19:00:00Z",
+    "file_freq_low_hz": 200000000,
+    "file_freq_high_hz": 2499990000,
+    "file_freq_resolution_hz": 70000.0,
+    "file_time_resolution_sec": 1.0,
+    "observation_start": "2026-09-02T19:00:00Z",
+    "observation_mid": "2026-09-02T19:05:00Z",
+    "observation_end": "2026-09-02T19:09:59Z",
+    "observation_duration_sec": 599.0,
+    "n_time_samples": 600,
+    "n_freq_channels": 32858,
+    "n_pixels": 27030,
+    "n_time_pixels": 272,
+    "n_freq_pixels": 134,
+    "method": "EMILY local preview: median/MAD + morphology + connected components",
+    "metadata": {
+      "synthetic": true,
+      "simulation": "EMILY-X LTE v3.1",
+      "waveform_source": "idle=srsran_idle.cf32; light=srsran_light.cf32; medium=srsran_medium.cf32; loaded=srsran_loaded.cf32",
+      "true_transmitter": "LTE_cell_tower",
+      "true_transmitter_lat": 39.160555555555554,
+      "true_transmitter_lon": -114.61435833333333,
+      "true_lte_center_hz": 800000000.0,
+      "true_lte_bandwidth_hz": 10000000.0,
+      "true_lte_n_prb": 50,
+      "true_lte_dl_earfcn": 6240,
+      "emission_components": [
+        {
+          "name": "LTE_fundamental",
+          "kind": "fundamental_plus_OOB",
+          "center_hz": 800000000.0,
+          "total_power_dbm": 43.00011193914476,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "harmonic_2",
+          "kind": "harmonic",
+          "center_hz": 1600000000.0,
+          "total_power_dbm": -16.99988806085524,
+          "harmonic_order": 2,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "harmonic_3",
+          "kind": "harmonic",
+          "center_hz": 2400000000.0,
+          "total_power_dbm": -21.99988806085524,
+          "harmonic_order": 3,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "carrier_lo_leakage",
+          "kind": "spurious",
+          "center_hz": 800000000.0,
+          "total_power_dbm": -12.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "reference_clock_minus",
+          "kind": "spurious",
+          "center_hz": 769280000.0,
+          "total_power_dbm": -27.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "reference_clock_plus",
+          "kind": "spurious",
+          "center_hz": 830720000.0,
+          "total_power_dbm": -27.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        }
+      ],
+      "propagation_model": "ITU-R P.452-16 + SRTM",
+      "distance_km": 45.47499510626112,
+      "lte_states": {
+        "idle": {
+          "source": "srsran_idle.cf32",
+          "raw_rms": 423.76605224609375,
+          "relative_power_db": -11.994668402200626,
+          "template_count": 5
+        },
+        "light": {
+          "source": "srsran_light.cf32",
+          "raw_rms": 849.3593139648438,
+          "relative_power_db": -5.955362582595375,
+          "template_count": 5
+        },
+        "medium": {
+          "source": "srsran_medium.cf32",
+          "raw_rms": 1301.0128173828125,
+          "relative_power_db": -2.251560150176458,
+          "template_count": 5
+        },
+        "loaded": {
+          "source": "srsran_loaded.cf32",
+          "raw_rms": 1686.0078125,
+          "relative_power_db": 0.0,
+          "template_count": 5
+        }
+      },
+      "lte_load_segments": [
+        {
+          "start_s": 0.0,
+          "end_s": 60.0,
+          "requested_state": "idle",
+          "state": "idle"
+        },
+        {
+          "start_s": 60.0,
+          "end_s": 150.0,
+          "requested_state": "light",
+          "state": "light"
+        },
+        {
+          "start_s": 150.0,
+          "end_s": 240.0,
+          "requested_state": "loaded",
+          "state": "loaded"
+        },
+        {
+          "start_s": 240.0,
+          "end_s": 330.0,
+          "requested_state": "medium",
+          "state": "medium"
+        },
+        {
+          "start_s": 330.0,
+          "end_s": 390.0,
+          "requested_state": "idle",
+          "state": "idle"
+        },
+        {
+          "start_s": 390.0,
+          "end_s": 480.0,
+          "requested_state": "loaded",
+          "state": "loaded"
+        },
+        {
+          "start_s": 480.0,
+          "end_s": 540.0,
+          "requested_state": "light",
+          "state": "light"
+        },
+        {
+          "start_s": 540.0,
+          "end_s": 600.0,
+          "requested_state": "medium",
+          "state": "medium"
+        }
+      ],
+      "tx_ground_elevation_m": 3257.3352637086678,
+      "rx_ground_elevation_m": 1712.7976379654444
+    }
+  },
+  {
+    "org_id": null,
+    "site_id": null,
+    "inst_id": null,
+    "data_type": "spectrometer",
+    "timezone": "America/Los_Angeles",
+    "privacy_tier": "internal",
+    "t_start": "2026-09-02T19:06:29Z",
+    "t_mid": "2026-09-02T19:08:14Z",
+    "t_end": "2026-09-02T19:09:59Z",
+    "t_start_local": "2026-09-02T12:06:29-07:00",
+    "t_mid_local": "2026-09-02T12:08:14-07:00",
+    "t_end_local": "2026-09-02T12:09:59-07:00",
+    "t_start_offset_sec": 389.0,
+    "t_mid_offset_sec": 494.0,
+    "t_end_offset_sec": 599.0,
+    "duration_sec": NaN,
+    "ongoing": true,
+    "time_structure": "continuous",
+    "f_low_hz": 795350000,
+    "f_high_hz": 804660000,
+    "f_center_hz": 800005000,
+    "bw_hz": 9310000,
+    "band_tag": "UHF",
+    "intensity_kind": "mW",
+    "intensity_value": 7.526671050001446e-12,
+    "Directional": false,
+    "RA": 0,
+    "Dec": 0,
+    "Az": 0,
+    "El": 0,
+    "lat": 39.5249,
+    "lon": -114.373325,
+    "altitude": null,
+    "original_file": "rx1_synthetic_600s_v3_1.npz",
+    "file_timestamp": "2026-09-02T19:00:00Z",
+    "file_freq_low_hz": 200000000,
+    "file_freq_high_hz": 2499990000,
+    "file_freq_resolution_hz": 70000.0,
+    "file_time_resolution_sec": 1.0,
+    "observation_start": "2026-09-02T19:00:00Z",
+    "observation_mid": "2026-09-02T19:05:00Z",
+    "observation_end": "2026-09-02T19:09:59Z",
+    "observation_duration_sec": 599.0,
+    "n_time_samples": 600,
+    "n_freq_channels": 32858,
+    "n_pixels": 22141,
+    "n_time_pixels": 211,
+    "n_freq_pixels": 134,
+    "method": "EMILY local preview: median/MAD + morphology + connected components",
+    "metadata": {
+      "synthetic": true,
+      "simulation": "EMILY-X LTE v3.1",
+      "waveform_source": "idle=srsran_idle.cf32; light=srsran_light.cf32; medium=srsran_medium.cf32; loaded=srsran_loaded.cf32",
+      "true_transmitter": "LTE_cell_tower",
+      "true_transmitter_lat": 39.160555555555554,
+      "true_transmitter_lon": -114.61435833333333,
+      "true_lte_center_hz": 800000000.0,
+      "true_lte_bandwidth_hz": 10000000.0,
+      "true_lte_n_prb": 50,
+      "true_lte_dl_earfcn": 6240,
+      "emission_components": [
+        {
+          "name": "LTE_fundamental",
+          "kind": "fundamental_plus_OOB",
+          "center_hz": 800000000.0,
+          "total_power_dbm": 43.00011193914476,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "harmonic_2",
+          "kind": "harmonic",
+          "center_hz": 1600000000.0,
+          "total_power_dbm": -16.99988806085524,
+          "harmonic_order": 2,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "harmonic_3",
+          "kind": "harmonic",
+          "center_hz": 2400000000.0,
+          "total_power_dbm": -21.99988806085524,
+          "harmonic_order": 3,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "carrier_lo_leakage",
+          "kind": "spurious",
+          "center_hz": 800000000.0,
+          "total_power_dbm": -12.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "reference_clock_minus",
+          "kind": "spurious",
+          "center_hz": 769280000.0,
+          "total_power_dbm": -27.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        },
+        {
+          "name": "reference_clock_plus",
+          "kind": "spurious",
+          "center_hz": 830720000.0,
+          "total_power_dbm": -27.0,
+          "harmonic_order": 1,
+          "antenna_extra_loss_db": 0.0
+        }
+      ],
+      "propagation_model": "ITU-R P.452-16 + SRTM",
+      "distance_km": 45.47499510626112,
+      "lte_states": {
+        "idle": {
+          "source": "srsran_idle.cf32",
+          "raw_rms": 423.76605224609375,
+          "relative_power_db": -11.994668402200626,
+          "template_count": 5
+        },
+        "light": {
+          "source": "srsran_light.cf32",
+          "raw_rms": 849.3593139648438,
+          "relative_power_db": -5.955362582595375,
+          "template_count": 5
+        },
+        "medium": {
+          "source": "srsran_medium.cf32",
+          "raw_rms": 1301.0128173828125,
+          "relative_power_db": -2.251560150176458,
+          "template_count": 5
+        },
+        "loaded": {
+          "source": "srsran_loaded.cf32",
+          "raw_rms": 1686.0078125,
+          "relative_power_db": 0.0,
+          "template_count": 5
+        }
+      },
+      "lte_load_segments": [
+        {
+          "start_s": 0.0,
+          "end_s": 60.0,
+          "requested_state": "idle",
+          "state": "idle"
+        },
+        {
+          "start_s": 60.0,
+          "end_s": 150.0,
+          "requested_state": "light",
+          "state": "light"
+        },
+        {
+          "start_s": 150.0,
+          "end_s": 240.0,
+          "requested_state": "loaded",
+          "state": "loaded"
+        },
+        {
+          "start_s": 240.0,
+          "end_s": 330.0,
+          "requested_state": "medium",
+          "state": "medium"
+        },
+        {
+          "start_s": 330.0,
+          "end_s": 390.0,
+          "requested_state": "idle",
+          "state": "idle"
+        },
+        {
+          "start_s": 390.0,
+          "end_s": 480.0,
+          "requested_state": "loaded",
+          "state": "loaded"
+        },
+        {
+          "start_s": 480.0,
+          "end_s": 540.0,
+          "requested_state": "light",
+          "state": "light"
+        },
+        {
+          "start_s": 540.0,
+          "end_s": 600.0,
+          "requested_state": "medium",
+          "state": "medium"
+        }
+      ],
+      "tx_ground_elevation_m": 3257.3352637086678,
+      "rx_ground_elevation_m": 1712.7976379654444
+    }
+  }
+]

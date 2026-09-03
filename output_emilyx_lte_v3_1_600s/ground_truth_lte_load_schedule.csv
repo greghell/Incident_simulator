@@ -1,0 +1,9 @@
+start_s,end_s,requested_state,state
+0.0,60.0,idle,idle
+60.0,150.0,light,light
+150.0,240.0,loaded,loaded
+240.0,330.0,medium,medium
+330.0,390.0,idle,idle
+390.0,480.0,loaded,loaded
+480.0,540.0,light,light
+540.0,600.0,medium,medium

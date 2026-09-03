@@ -1,0 +1,493 @@
+{
+  "simulation": "EMILY-X LTE v3.1",
+  "waveform_source": "idle=srsran_idle.cf32; light=srsran_light.cf32; medium=srsran_medium.cf32; loaded=srsran_loaded.cf32",
+  "transmitter": {
+    "name": "LTE_cell_tower",
+    "lat_deg": 39.160555555555554,
+    "lon_deg": -114.61435833333333,
+    "height_agl_m": 40.0,
+    "conducted_power_dbm": 43.0,
+    "center_frequency_hz": 800000000.0,
+    "channel_bandwidth_hz": 10000000.0,
+    "max_gain_dbi": 17.0,
+    "horizontal_hpbw_deg": 65.0,
+    "sector_azimuth_deg": 10.0,
+    "electrical_downtilt_deg": 4.0
+  },
+  "receivers": [
+    {
+      "name": "RX1",
+      "lat_deg": 39.5249,
+      "lon_deg": -114.373325,
+      "height_agl_m": 2.0,
+      "antenna_gain_dbi": 0.0,
+      "noise_figure_db": 6.0,
+      "excess_path_loss_db": 0.0
+    },
+    {
+      "name": "RX2",
+      "lat_deg": 39.595518,
+      "lon_deg": -114.535418,
+      "height_agl_m": 2.0,
+      "antenna_gain_dbi": 0.0,
+      "noise_figure_db": 6.0,
+      "excess_path_loss_db": 0.0
+    }
+  ],
+  "lte": {
+    "center_hz": 800000000.0,
+    "channel_bw_hz": 10000000.0,
+    "n_prb": 50,
+    "dl_earfcn": 6240,
+    "ul_earfcn": 24240,
+    "srsran_iq_sample_rate_hz": 11520000.0,
+    "states": {
+      "idle": {
+        "source": "srsran_idle.cf32",
+        "raw_rms": 423.76605224609375,
+        "relative_power_db": -11.994668402200626,
+        "template_count": 5,
+        "representative_rf_diagnostics": {
+          "oversampled_rate_hz": 46080000.0,
+          "raw_post_pa_aclr_db": 27.338578226848508,
+          "effective_near_stop_atten_db": 20.66142177315669,
+          "measured_aclr_db": 48.0000000000052,
+          "target_aclr_db": 48.0
+        },
+        "templates": [
+          {
+            "template_index": 0,
+            "start_s": 0.0,
+            "end_s": 0.1,
+            "raw_rms": 425.7586364746094,
+            "relative_power_db": -11.953922326960724,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 27.35022119902341,
+              "effective_near_stop_atten_db": 20.64977880098013,
+              "measured_aclr_db": 48.00000000000353,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 1,
+            "start_s": 0.1,
+            "end_s": 0.2,
+            "raw_rms": 420.7140197753906,
+            "relative_power_db": -12.05745196219614,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 27.26904454559882,
+              "effective_near_stop_atten_db": 20.730955454419018,
+              "measured_aclr_db": 48.000000000017835,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 2,
+            "start_s": 0.2,
+            "end_s": 0.3,
+            "raw_rms": 425.7933654785156,
+            "relative_power_db": -11.953213850450435,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 27.375080003428486,
+              "effective_near_stop_atten_db": 20.624919996589597,
+              "measured_aclr_db": 48.00000000001808,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 3,
+            "start_s": 0.3,
+            "end_s": 0.4,
+            "raw_rms": 425.72991943359375,
+            "relative_power_db": -11.95450820224315,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 27.338578226848508,
+              "effective_near_stop_atten_db": 20.66142177315669,
+              "measured_aclr_db": 48.0000000000052,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 4,
+            "start_s": 0.4,
+            "end_s": 0.5,
+            "raw_rms": 420.7987976074219,
+            "relative_power_db": -12.055701850064612,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 27.277458220131095,
+              "effective_near_stop_atten_db": 20.722541779878156,
+              "measured_aclr_db": 48.00000000000925,
+              "target_aclr_db": 48.0
+            }
+          }
+        ]
+      },
+      "light": {
+        "source": "srsran_light.cf32",
+        "raw_rms": 849.3593139648438,
+        "relative_power_db": -5.955362582595375,
+        "template_count": 5,
+        "representative_rf_diagnostics": {
+          "oversampled_rate_hz": 46080000.0,
+          "raw_post_pa_aclr_db": 33.67059211031563,
+          "effective_near_stop_atten_db": 14.329407889699723,
+          "measured_aclr_db": 48.000000000015355,
+          "target_aclr_db": 48.0
+        },
+        "templates": [
+          {
+            "template_index": 0,
+            "start_s": 0.0,
+            "end_s": 0.1,
+            "raw_rms": 850.6557006835938,
+            "relative_power_db": -5.942115318244204,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 33.67059211031563,
+              "effective_near_stop_atten_db": 14.329407889699723,
+              "measured_aclr_db": 48.000000000015355,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 1,
+            "start_s": 0.1,
+            "end_s": 0.2,
+            "raw_rms": 853.2196044921875,
+            "relative_power_db": -5.9159751397174185,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 33.793990120038124,
+              "effective_near_stop_atten_db": 14.206009879962949,
+              "measured_aclr_db": 48.00000000000107,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 2,
+            "start_s": 0.2,
+            "end_s": 0.3,
+            "raw_rms": 846.1583862304688,
+            "relative_power_db": -5.988158392474132,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 33.564554438571875,
+              "effective_near_stop_atten_db": 14.435445561448432,
+              "measured_aclr_db": 48.0000000000203,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 3,
+            "start_s": 0.3,
+            "end_s": 0.4,
+            "raw_rms": 843.970703125,
+            "relative_power_db": -6.010644230685042,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 33.50452189487949,
+              "effective_near_stop_atten_db": 14.495478105127404,
+              "measured_aclr_db": 48.0000000000069,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 4,
+            "start_s": 0.4,
+            "end_s": 0.5,
+            "raw_rms": 852.752685546875,
+            "relative_power_db": -5.9207297380820645,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 33.709873194855064,
+              "effective_near_stop_atten_db": 14.290126805171894,
+              "measured_aclr_db": 48.000000000026965,
+              "target_aclr_db": 48.0
+            }
+          }
+        ]
+      },
+      "medium": {
+        "source": "srsran_medium.cf32",
+        "raw_rms": 1301.0128173828125,
+        "relative_power_db": -2.251560150176458,
+        "template_count": 5,
+        "representative_rf_diagnostics": {
+          "oversampled_rate_hz": 46080000.0,
+          "raw_post_pa_aclr_db": 37.48670634739573,
+          "effective_near_stop_atten_db": 10.513293652629727,
+          "measured_aclr_db": 48.000000000025466,
+          "target_aclr_db": 48.0
+        },
+        "templates": [
+          {
+            "template_index": 0,
+            "start_s": 0.0,
+            "end_s": 0.1,
+            "raw_rms": 1301.482666015625,
+            "relative_power_db": -2.2484238885063967,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 37.48670634739573,
+              "effective_near_stop_atten_db": 10.513293652629727,
+              "measured_aclr_db": 48.000000000025466,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 1,
+            "start_s": 0.1,
+            "end_s": 0.2,
+            "raw_rms": 1302.6746826171875,
+            "relative_power_db": -2.2404721989693104,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 37.88065240462701,
+              "effective_near_stop_atten_db": 10.119347595373256,
+              "measured_aclr_db": 48.00000000000026,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 2,
+            "start_s": 0.2,
+            "end_s": 0.3,
+            "raw_rms": 1299.44580078125,
+            "relative_power_db": -2.2620282536214207,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 37.59773118066108,
+              "effective_near_stop_atten_db": 10.402268819352685,
+              "measured_aclr_db": 48.00000000001376,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 3,
+            "start_s": 0.3,
+            "end_s": 0.4,
+            "raw_rms": 1298.8568115234375,
+            "relative_power_db": -2.2659661288748763,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 37.47649165015628,
+              "effective_near_stop_atten_db": 10.523508349870099,
+              "measured_aclr_db": 48.000000000026375,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 4,
+            "start_s": 0.4,
+            "end_s": 0.5,
+            "raw_rms": 1302.599365234375,
+            "relative_power_db": -2.2409744098408764,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 37.86218427527914,
+              "effective_near_stop_atten_db": 10.13781572472908,
+              "measured_aclr_db": 48.00000000000822,
+              "target_aclr_db": 48.0
+            }
+          }
+        ]
+      },
+      "loaded": {
+        "source": "srsran_loaded.cf32",
+        "raw_rms": 1686.0078125,
+        "relative_power_db": 0.0,
+        "template_count": 5,
+        "representative_rf_diagnostics": {
+          "oversampled_rate_hz": 46080000.0,
+          "raw_post_pa_aclr_db": 40.44017216403038,
+          "effective_near_stop_atten_db": 7.559827835993929,
+          "measured_aclr_db": 48.00000000002431,
+          "target_aclr_db": 48.0
+        },
+        "templates": [
+          {
+            "template_index": 0,
+            "start_s": 0.0,
+            "end_s": 0.1,
+            "raw_rms": 1686.029541015625,
+            "relative_power_db": 0.00011193914475725978,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 40.44017216403038,
+              "effective_near_stop_atten_db": 7.559827835993929,
+              "measured_aclr_db": 48.00000000002431,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 1,
+            "start_s": 0.1,
+            "end_s": 0.2,
+            "raw_rms": 1686.923095703125,
+            "relative_power_db": 0.004714030201876677,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 40.39323561620662,
+              "effective_near_stop_atten_db": 7.60676438381779,
+              "measured_aclr_db": 48.00000000002441,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 2,
+            "start_s": 0.2,
+            "end_s": 0.3,
+            "raw_rms": 1686.03125,
+            "relative_power_db": 0.00012074328596029896,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 40.37286678986456,
+              "effective_near_stop_atten_db": 7.627133210153261,
+              "measured_aclr_db": 48.00000000001782,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 3,
+            "start_s": 0.3,
+            "end_s": 0.4,
+            "raw_rms": 1685.3092041015625,
+            "relative_power_db": -0.0035998012088615987,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 40.30360274496397,
+              "effective_near_stop_atten_db": 7.6963972550584,
+              "measured_aclr_db": 48.00000000002237,
+              "target_aclr_db": 48.0
+            }
+          },
+          {
+            "template_index": 4,
+            "start_s": 0.4,
+            "end_s": 0.5,
+            "raw_rms": 1685.745361328125,
+            "relative_power_db": -0.0013521878983231545,
+            "rf_diagnostics": {
+              "oversampled_rate_hz": 46080000.0,
+              "raw_post_pa_aclr_db": 40.39003724311,
+              "effective_near_stop_atten_db": 7.609962756896493,
+              "measured_aclr_db": 48.000000000006494,
+              "target_aclr_db": 48.0
+            }
+          }
+        ]
+      }
+    },
+    "load_segments": [
+      {
+        "start_s": 0.0,
+        "end_s": 60.0,
+        "requested_state": "idle",
+        "state": "idle"
+      },
+      {
+        "start_s": 60.0,
+        "end_s": 150.0,
+        "requested_state": "light",
+        "state": "light"
+      },
+      {
+        "start_s": 150.0,
+        "end_s": 240.0,
+        "requested_state": "loaded",
+        "state": "loaded"
+      },
+      {
+        "start_s": 240.0,
+        "end_s": 330.0,
+        "requested_state": "medium",
+        "state": "medium"
+      },
+      {
+        "start_s": 330.0,
+        "end_s": 390.0,
+        "requested_state": "idle",
+        "state": "idle"
+      },
+      {
+        "start_s": 390.0,
+        "end_s": 480.0,
+        "requested_state": "loaded",
+        "state": "loaded"
+      },
+      {
+        "start_s": 480.0,
+        "end_s": 540.0,
+        "requested_state": "light",
+        "state": "light"
+      },
+      {
+        "start_s": 540.0,
+        "end_s": 600.0,
+        "requested_state": "medium",
+        "state": "medium"
+      }
+    ],
+    "template_window_ms": 100.0,
+    "template_hop_ms": 100.0,
+    "max_templates_per_state": 5,
+    "template_selection": "shuffled cycles without replacement"
+  },
+  "backend": {
+    "freq_min_hz": 200000000.0,
+    "freq_max_hz": 2500000000.0,
+    "channel_spacing_hz": 70000.0,
+    "rbw_hz": 140000.0,
+    "time_resolution_s": 1.0,
+    "duration_s": 600
+  },
+  "propagation": {
+    "mode": "p452",
+    "p452_version": 16,
+    "p452_time_percent": 50.0,
+    "profile_step_m": 100.0,
+    "srtm_dir": "srtm_data",
+    "srtm_download_missing": true,
+    "shadowing_sigma_db": 0.8,
+    "shadowing_correlation_s": 30.0
+  },
+  "rf_chain": {
+    "oversample_factor": 4,
+    "pa_input_backoff_db": 8.0,
+    "pa_rapp_p": 3.0,
+    "target_aclr_db": 48.0,
+    "rf_filter_far_stop_atten_db": 70.0,
+    "second_harmonic_dbc": -60.0,
+    "third_harmonic_dbc": -65.0,
+    "spurious_products": [
+      {
+        "name": "carrier_lo_leakage",
+        "frequency_hz": 800000000.0,
+        "level_dbc": -55.0,
+        "fwhm_hz": 8000.0,
+        "antenna_extra_loss_db": 0.0
+      },
+      {
+        "name": "reference_clock_minus",
+        "frequency_hz": 769280000.0,
+        "level_dbc": -70.0,
+        "fwhm_hz": 30000.0,
+        "antenna_extra_loss_db": 0.0
+      },
+      {
+        "name": "reference_clock_plus",
+        "frequency_hz": 830720000.0,
+        "level_dbc": -70.0,
+        "fwhm_hz": 30000.0,
+        "antenna_extra_loss_db": 0.0
+      }
+    ]
+  },
+  "pycraf_available": true,
+  "random_seed": 20260902
+}
