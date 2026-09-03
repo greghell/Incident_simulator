@@ -1,0 +1,18 @@
+{
+  "capture_file": "srsran_medium.cf32",
+  "state": "medium",
+  "dtype": "complex64",
+  "sample_rate_hz": 11520000.0,
+  "capture_seconds": 0.5,
+  "expected_samples": 5760000,
+  "expected_bytes": 46080000,
+  "capture_completed_utc": "2026-09-03T21:40:21.926855+00:00",
+  "enb_tx_endpoint": "tcp://127.0.0.1:2000",
+  "ue_rx_endpoint": "tcp://*:2100",
+  "note": "Genuine srsRAN 4G eNodeB downlink captured by transparent GNU Radio broker; load label supplied interactively by operator.",
+  "automated_capture": true,
+  "traffic_profile": {
+    "traffic_generator": "iperf3 UDP",
+    "offered_downlink_load": "15M"
+  }
+}
