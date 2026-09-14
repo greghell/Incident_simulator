@@ -135,6 +135,7 @@ def parse_args():
     p.add_argument("--sample-rate", type=float, default=11.52e6)
     p.add_argument("--capture-seconds", type=float, default=0.50)
     p.add_argument("--output-dir", type=Path, default=Path("."))
+    p.add_argument("--prefix", default="srsran", help="output filename prefix; e.g. srsran_d2c")
     return p.parse_args()
 
 
@@ -157,6 +158,7 @@ def main():
     print(f"Sample rate:   {args.sample_rate/1e6:.3f} Msps")
     print(f"Capture:       {args.capture_seconds:.3f} s each")
     print(f"Output dir:    {args.output_dir.resolve()}")
+    print(f"Prefix:        {args.prefix}")
     print()
     print("Commands: idle, light, medium, loaded, q")
     print("Change traffic in another terminal BEFORE entering the matching label here.")
@@ -173,7 +175,7 @@ def main():
             if cmd not in {"idle", "light", "medium", "loaded"}:
                 print("Unknown command. Use idle, light, medium, loaded, or q.")
                 continue
-            out = args.output_dir / f"srsran_{cmd}.cf32"
+            out = args.output_dir / f"{args.prefix}_{cmd}.cf32"
             if out.exists():
                 ans = input(f"{out.name} exists. Overwrite? [y/N]: ").strip().lower()
                 if ans not in {"y", "yes"}:

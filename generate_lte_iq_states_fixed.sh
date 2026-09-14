@@ -2,6 +2,7 @@
 set -Eeuo pipefail
 
 # EMILY-X: one-command generation of four genuine srsRAN LTE downlink IQ states.
+# Usage: ./generate_lte_iq_states_fixed.sh [terrestrial|d2c]
 #
 # Robust WSL version.  It intentionally does NOT use `setsid sudo ...` and does
 # not depend on srsRAN C++ stdout being flushed into redirected log files.
@@ -16,15 +17,44 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="${PROJECT_DIR:-$SCRIPT_DIR}"
 BROKER="${BROKER:-$PROJECT_DIR/gnuradio_srsran_downlink_multicapture_v3.py}"
 
+PROFILE="${1:-${PROFILE:-terrestrial}}"
+case "$PROFILE" in
+    terrestrial)
+        DEFAULT_SAMPLE_RATE="11.52e6"
+        DEFAULT_DL_EARFCN="6240"
+        DEFAULT_N_PRB="50"
+        DEFAULT_PREFIX="srsran"
+        DEFAULT_LIGHT_RATE="5M"
+        DEFAULT_MEDIUM_RATE="15M"
+        PROFILE_LABEL="10 MHz / 50-PRB terrestrial LTE at 800 MHz"
+        ;;
+    d2c|leo)
+        PROFILE="d2c"
+        DEFAULT_SAMPLE_RATE="5.76e6"
+        DEFAULT_DL_EARFCN="8665"
+        DEFAULT_N_PRB="25"
+        DEFAULT_PREFIX="srsran_d2c"
+        DEFAULT_LIGHT_RATE="2M"
+        DEFAULT_MEDIUM_RATE="7M"
+        PROFILE_LABEL="5 MHz / 25-PRB D2C LTE at 1992.5 MHz"
+        ;;
+    *)
+        echo "Usage: $0 [terrestrial|d2c]" >&2
+        exit 2
+        ;;
+esac
+
 UE_NS="${UE_NS:-ue1}"
-SAMPLE_RATE="${SAMPLE_RATE:-11.52e6}"
+SAMPLE_RATE="${SAMPLE_RATE:-$DEFAULT_SAMPLE_RATE}"
 CAPTURE_SECONDS="${CAPTURE_SECONDS:-0.5}"
-LIGHT_RATE="${LIGHT_RATE:-5M}"
-MEDIUM_RATE="${MEDIUM_RATE:-15M}"
+LIGHT_RATE="${LIGHT_RATE:-$DEFAULT_LIGHT_RATE}"
+MEDIUM_RATE="${MEDIUM_RATE:-$DEFAULT_MEDIUM_RATE}"
 TRAFFIC_SECONDS="${TRAFFIC_SECONDS:-7}"
 TRAFFIC_SETTLE_SECONDS="${TRAFFIC_SETTLE_SECONDS:-2}"
 IDLE_SETTLE_SECONDS="${IDLE_SETTLE_SECONDS:-2}"
-DL_EARFCN="${DL_EARFCN:-6240}"
+DL_EARFCN="${DL_EARFCN:-$DEFAULT_DL_EARFCN}"
+N_PRB="${N_PRB:-$DEFAULT_N_PRB}"
+CAPTURE_PREFIX="${CAPTURE_PREFIX:-$DEFAULT_PREFIX}"
 
 RUN_TAG="$(date -u +%Y%m%dT%H%M%SZ)"
 RUN_DIR="${RUN_DIR:-$HOME/emilyx_lte_iq_$RUN_TAG}"
@@ -210,9 +240,9 @@ wait_ready "srsEPC / srs_spgw_sgi" 20 "$EPC_PID" "$LOG_DIR/epc.log" epc_ready \
     || die "srsEPC did not initialize"
 log "srsEPC ready (srs_spgw_sgi = 172.16.0.1)"
 
-log "Starting 10 MHz / 50-PRB srsENB at 800 MHz (EARFCN $DL_EARFCN)"
+log "Starting $PROFILE_LABEL (EARFCN $DL_EARFCN)"
 srsenb \
-    --enb.n_prb=50 \
+    --enb.n_prb="$N_PRB" \
     --enb.tm=1 \
     --enb.nof_ports=1 \
     --rf.dl_earfcn="$DL_EARFCN" \
@@ -235,6 +265,7 @@ python3 -u "$BROKER" \
     --sample-rate "$SAMPLE_RATE" \
     --capture-seconds "$CAPTURE_SECONDS" \
     --output-dir "$RUN_DIR" \
+    --prefix "$CAPTURE_PREFIX" \
     <"$FIFO" >"$LOG_DIR/broker.log" 2>&1 &
 BROKER_PID=$!
 wait_ready "GNU Radio broker ZMQ UE port 2100" 20 "$BROKER_PID" "$LOG_DIR/broker.log" broker_ready \
@@ -281,9 +312,9 @@ capture_state() {
     local state="$1"
     log "Capturing LTE state: $state"
     printf '%s\n' "$state" >&3
-    wait_for_log "$LOG_DIR/broker.log" "Complete: srsran_${state}.cf32" 20 \
+    wait_for_log "$LOG_DIR/broker.log" "Complete: ${CAPTURE_PREFIX}_${state}.cf32" 20 \
         || die "Capture '$state' did not complete"
-    [[ -s "$RUN_DIR/srsran_${state}.cf32" ]] || die "Capture file is empty: $state"
+    [[ -s "$RUN_DIR/${CAPTURE_PREFIX}_${state}.cf32" ]] || die "Capture file is empty: $state"
 }
 
 run_udp_and_capture() {
@@ -334,7 +365,7 @@ fi
 IPERF_CLIENT_PID=""
 
 log "Adding automated traffic-profile metadata"
-python3 - "$RUN_DIR" "$LIGHT_RATE" "$MEDIUM_RATE" <<'PY'
+python3 - "$RUN_DIR" "$LIGHT_RATE" "$MEDIUM_RATE" "$CAPTURE_PREFIX" "$PROFILE" "$N_PRB" "$DL_EARFCN" "$SAMPLE_RATE" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -342,6 +373,11 @@ from pathlib import Path
 run_dir = Path(sys.argv[1])
 light_rate = sys.argv[2]
 medium_rate = sys.argv[3]
+prefix = sys.argv[4]
+profile_name = sys.argv[5]
+n_prb = int(sys.argv[6])
+dl_earfcn = int(sys.argv[7])
+sample_rate = float(sys.argv[8])
 profiles = {
     "idle": {
         "traffic_generator": "none",
@@ -361,15 +397,19 @@ profiles = {
     },
 }
 for state, profile in profiles.items():
-    p = run_dir / f"srsran_{state}.cf32.json"
+    p = run_dir / f"{prefix}_{state}.cf32.json"
     d = json.loads(p.read_text())
     d["automated_capture"] = True
     d["traffic_profile"] = profile
+    d["radio_profile"] = profile_name
+    d["lte_n_prb"] = n_prb
+    d["lte_dl_earfcn"] = dl_earfcn
+    d["sample_rate_hz"] = sample_rate
     p.write_text(json.dumps(d, indent=2) + "\n")
 PY
 
 log "Validating file sizes and measuring relative complex RMS"
-python3 - "$RUN_DIR" "$SAMPLE_RATE" "$CAPTURE_SECONDS" <<'PY'
+python3 - "$RUN_DIR" "$SAMPLE_RATE" "$CAPTURE_SECONDS" "$CAPTURE_PREFIX" <<'PY'
 import sys
 from pathlib import Path
 import numpy as np
@@ -377,12 +417,13 @@ import numpy as np
 root = Path(sys.argv[1])
 fs = float(sys.argv[2])
 dur = float(sys.argv[3])
+prefix = sys.argv[4]
 expected_samples = round(fs * dur)
 expected_bytes = expected_samples * np.dtype(np.complex64).itemsize
 states = ["idle", "light", "medium", "loaded"]
 rms = {}
 for state in states:
-    p = root / f"srsran_{state}.cf32"
+    p = root / f"{prefix}_{state}.cf32"
     size = p.stat().st_size
     if size != expected_bytes:
         raise SystemExit(f"{p.name}: expected {expected_bytes} bytes, got {size}")
@@ -398,8 +439,8 @@ PY
 
 log "Copying captures and sidecars to Windows/project directory"
 for state in idle light medium loaded; do
-    cp -f "$RUN_DIR/srsran_${state}.cf32" "$PROJECT_DIR/"
-    cp -f "$RUN_DIR/srsran_${state}.cf32.json" "$PROJECT_DIR/"
+    cp -f "$RUN_DIR/${CAPTURE_PREFIX}_${state}.cf32" "$PROJECT_DIR/"
+    cp -f "$RUN_DIR/${CAPTURE_PREFIX}_${state}.cf32.json" "$PROJECT_DIR/"
 done
 
 log "Done"
@@ -407,9 +448,9 @@ echo "Captures copied to: $PROJECT_DIR"
 echo "Run logs retained in: $LOG_DIR"
 echo
 printf '  %s\n' \
-    "$PROJECT_DIR/srsran_idle.cf32" \
-    "$PROJECT_DIR/srsran_light.cf32" \
-    "$PROJECT_DIR/srsran_medium.cf32" \
-    "$PROJECT_DIR/srsran_loaded.cf32"
+    "$PROJECT_DIR/${CAPTURE_PREFIX}_idle.cf32" \
+    "$PROJECT_DIR/${CAPTURE_PREFIX}_light.cf32" \
+    "$PROJECT_DIR/${CAPTURE_PREFIX}_medium.cf32" \
+    "$PROJECT_DIR/${CAPTURE_PREFIX}_loaded.cf32"
 
 # Normal exit triggers cleanup, which shuts down the LTE stack and namespace.

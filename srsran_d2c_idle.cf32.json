@@ -1,12 +1,12 @@
 {
-  "capture_file": "srsran_idle.cf32",
+  "capture_file": "srsran_d2c_idle.cf32",
   "state": "idle",
   "dtype": "complex64",
-  "sample_rate_hz": 11520000.0,
+  "sample_rate_hz": 5760000.0,
   "capture_seconds": 0.5,
-  "expected_samples": 5760000,
-  "expected_bytes": 46080000,
-  "capture_completed_utc": "2026-09-12T17:58:38.307984+00:00",
+  "expected_samples": 2880000,
+  "expected_bytes": 23040000,
+  "capture_completed_utc": "2026-09-12T14:35:30.989826+00:00",
   "enb_tx_endpoint": "tcp://127.0.0.1:2000",
   "ue_rx_endpoint": "tcp://*:2100",
   "note": "Genuine srsRAN 4G eNodeB downlink captured by transparent GNU Radio broker; load label supplied interactively by operator.",
@@ -15,7 +15,7 @@
     "traffic_generator": "none",
     "offered_downlink_load": "idle cell; no user iperf traffic"
   },
-  "radio_profile": "terrestrial",
-  "lte_n_prb": 50,
-  "lte_dl_earfcn": 6240
+  "radio_profile": "d2c",
+  "lte_n_prb": 25,
+  "lte_dl_earfcn": 8665
 }
