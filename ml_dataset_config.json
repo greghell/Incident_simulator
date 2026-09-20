@@ -1,0 +1,103 @@
+{
+  "notes": "First-pass synthetic terrestrial LTE ML campaign. carrier_mhz_choices are RF translations of the same genuine 10-MHz/50-PRB baseband IQ; replace them with the carrier centers appropriate to the study.",
+  "duration_s": 600,
+  "propagation": "p452",
+  "p452_time_percent": 50.0,
+  "simulation_start_utc": "2026-09-02T19:00:00Z",
+  "location": {
+    "reference_lat_deg": 39.560209,
+    "reference_lon_deg": -114.4543715,
+    "min_distance_km": 5.0,
+    "max_distance_km": 80.0,
+    "sampling": "uniform_distance"
+  },
+  "transmitter": {
+    "height_agl_m": [
+      20.0,
+      80.0
+    ],
+    "conducted_power_dbm": [
+      35.0,
+      46.0
+    ],
+    "max_gain_dbi": [
+      12.0,
+      20.0
+    ],
+    "horizontal_hpbw_deg": [
+      45.0,
+      90.0
+    ],
+    "sector_azimuth_deg": [
+      0.0,
+      360.0
+    ],
+    "electrical_downtilt_deg": [
+      0.0,
+      10.0
+    ],
+    "carrier_mhz_choices": [
+      700.0,
+      800.0,
+      900.0,
+      1800.0,
+      1900.0,
+      2100.0
+    ]
+  },
+  "rf_chain": {
+    "pa_input_backoff_db": [
+      5.0,
+      11.0
+    ],
+    "pa_rapp_p": [
+      2.0,
+      4.0
+    ],
+    "target_aclr_db": [
+      45.0,
+      55.0
+    ],
+    "second_harmonic_dbc": [
+      -75.0,
+      -50.0
+    ],
+    "third_harmonic_dbc": [
+      -80.0,
+      -55.0
+    ],
+    "second_harmonic_antenna_extra_loss_db": [
+      5.0,
+      20.0
+    ],
+    "third_harmonic_antenna_extra_loss_db": [
+      10.0,
+      25.0
+    ]
+  },
+  "propagation_nuisance": {
+    "shadowing_sigma_db": [
+      0.3,
+      2.0
+    ],
+    "shadowing_correlation_s": [
+      10.0,
+      60.0
+    ]
+  },
+  "traffic": {
+    "min_segment_s": 30,
+    "max_segment_s": 120,
+    "state_probabilities": {
+      "idle": 0.2,
+      "light": 0.25,
+      "medium": 0.3,
+      "loaded": 0.25
+    }
+  },
+  "split": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  }
+}
