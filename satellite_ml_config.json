@@ -1,0 +1,37 @@
+{
+  "epoch_random_days": [0.0, 365.0],
+  "trajectory": {
+    "duration_s": 360.0,
+    "time_resolution_s": 1.0
+  },
+  "orbit": {
+    "altitude_km": [400.0, 650.0],
+    "closest_approach_km": [0.0, 40.0],
+    "peak_eirp_dbm": [74.0, 80.0],
+    "beam_hpbw_deg": [8.0, 16.0],
+    "sidelobe_floor_db": -30.0,
+    "max_scan_loss_db": 6.0
+  },
+  "acceptance": {
+    "min_elevation_deg": 20.0,
+    "min_common_detected_samples": 16,
+    "candidate_oversample": 3,
+    "max_attempts": 30
+  },
+  "traffic": {
+    "state_probabilities": {
+      "idle": 0.15,
+      "light": 0.25,
+      "medium": 0.30,
+      "loaded": 0.30
+    }
+  },
+  "detector": {
+    "threshold_sigma": 8.0
+  },
+  "split": {
+    "train": 0.70,
+    "validation": 0.15,
+    "test": 0.15
+  }
+}
